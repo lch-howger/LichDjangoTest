@@ -1,7 +1,7 @@
 import os
 import sqlite3
 
-sql_create_table = 'CREATE TABLE stars (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, star TEXT NOT NULL, time TEXT NOT NULL, text TEXT NOT NULL)'
+sql_create_table = 'CREATE TABLE stars (id TEXT NOT NULL, star TEXT NOT NULL, time TEXT NOT NULL, text TEXT NOT NULL)'
 
 # connect to the database from filename
 file_exists = os.path.exists('./stars.db')

@@ -1,6 +1,13 @@
+import sqlite3
+import json
+
 from django.http import HttpResponse
 from django.shortcuts import render
 import urllib.request
+
+sql_insert_task = "SELECT * FROM stars WHERE id='{}'"
+
+db = sqlite3.connect('./stars.db')
 
 
 def index(request):
@@ -16,8 +23,21 @@ def stars(request):
         context = {}
         # return render(request, 'index.html', context)
 
-    response = urllib.request.urlopen('https://www.d1xz.net/yunshi/today/Gemini/')
-    decode = response.read().decode()
+        body = request.body
+        result = str(body, 'utf-8')
+        # print(result)
 
-    print(decode)
-    return HttpResponse('ad')
+        # result = json.loads(request.body)
+        # print(result)
+
+        # print(request.body)
+        # print(request.body)
+        # loads = json.loads(request.body.decode('utf-8'))
+        # print(loads)
+
+        # cursor = db.cursor()
+        # cursor.execute(sql_insert_task.format(id, star, time, result))
+        # db.commit()
+        # cursor.close()
+
+        return HttpResponse(result)
